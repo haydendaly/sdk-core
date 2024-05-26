@@ -686,8 +686,7 @@ impl ManagedRun {
                 let wft_timeout: Duration = self
                     .wfm
                     .machines
-                    .get_started_info()
-                    .and_then(|attrs| attrs.workflow_task_timeout)
+                    .get_started_timeout()
                     .ok_or_else(|| {
                         WFMachinesError::Fatal(
                             "Workflow's start attribs were missing a well formed task timeout"

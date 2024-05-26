@@ -225,9 +225,9 @@ impl Workflows {
                                 }
                             }
                             Err(e) => {
-                                let _ = activation_tx.send(Err(e)).inspect_err(|e| {
+                                if let Err(e) = activation_tx.send(Err(e)) {
                                     error!(activation=?e.0, "Activation processor channel dropped");
-                                });
+                                }
                             }
                         }
                     }

@@ -1248,11 +1248,11 @@ enum CommandID {
 /// Details remembered from the workflow execution started event that we may need to recall later.
 /// Is a subset of `WorkflowExecutionStartedEventAttributes`, but avoids holding on to huge fields.
 #[derive(Debug, Clone)]
-struct WorkflowStartedInfo {
-    workflow_task_timeout: Option<Duration>,
-    memo: Option<Memo>,
-    search_attrs: Option<SearchAttributes>,
-    retry_policy: Option<RetryPolicy>,
+pub struct WorkflowStartedInfo {
+    pub workflow_task_timeout: Option<Duration>,
+    pub memo: Option<Memo>,
+    pub search_attrs: Option<SearchAttributes>,
+    pub retry_policy: Option<RetryPolicy>,
 }
 
 /// Wraps outgoing activation job protos with some internal details core might care about

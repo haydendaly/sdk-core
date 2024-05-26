@@ -363,8 +363,8 @@ impl WorkflowMachines {
 
     /// Returns start info for the workflow if it has started
     pub(crate) fn get_started_timeout(&self) -> Option<Duration> {
-        self.drive_me.get_started_info().workflow_task_timeout
-    }
+        self.drive_me.get_started_info().and_then(|info| info.workflow_task_timeout)
+    }    
 
     pub(crate) fn get_last_wft_started_id(&self) -> i64 {
         self.current_started_event_id
